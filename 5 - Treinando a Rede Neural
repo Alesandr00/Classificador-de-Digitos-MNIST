@@ -1,0 +1,21 @@
+#Definindo o número de épocas
+num_epocas = 5
+
+#Treinamento da rede
+for epoca in range(num_epocas):
+  perda_total = 0
+  for imagens, labels in trainloader:
+    otimizador.zero_grad()
+    #Passar a imagem pela rede (forward)
+    saida = modelo(imagens)
+    #Calcular a perda(erro)
+    perda = criterio(saida, labels)
+    #Backpropagation: calcular os gradientes
+    perda.backward()
+    #Atualizar os pesos da rede
+    otimizador.step()
+    #Acumular a perda total da época
+    perda_total += perda.item()
+
+  # Exibir a perda média da época, a medida que vai diminuindo a rede vai aprendendo
+  print(f"Época {epoca+1}/{num_epocas}, Perda média: {perda_total / len(trainloader):.4f}")
