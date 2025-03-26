@@ -11,3 +11,6 @@ O objetivo deste projeto é construir e treinar uma rede neural simples para cla
 - **PyTorch**: Framework para construção e treinamento de redes neurais.
 - **Torchvision**: Biblioteca para carregar datasets de visão computacional, como o MNIST.
 - **Matplotlib**: Usada para visualizar as imagens do dataset.
+  
+## Resultado Final
+Acurácia no conjunto de teste: 96.98%
