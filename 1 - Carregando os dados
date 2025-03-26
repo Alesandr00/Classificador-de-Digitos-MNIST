@@ -1,0 +1,17 @@
+import torch  
+import torchvision  
+import torchvision.transforms as transforms  
+
+# Transformação para converter as imagens em tensores e normalizar
+transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))])  
+
+# Baixando e carregando os dados de treino e teste
+trainset = torchvision.datasets.MNIST(root='./data', train=True, download=True, transform=transform)  
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=32, shuffle=True)  
+
+testset = torchvision.datasets.MNIST(root='./data', train=False, download=True, transform=transform)  
+testloader = torch.utils.data.DataLoader(testset, batch_size=32, shuffle=False)  
+
+# Verificando o tamanho do dataset
+print(f"Tamanho do dataset de treino: {len(trainset)} imagens")  
+print(f"Tamanho do dataset de teste: {len(testset)} imagens")  
