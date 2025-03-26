@@ -1,0 +1,19 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+#Função para exibir algumas imagens do dataset
+def imagem(img):
+  img = img / 2 + 0.5 #Desfazendo a normalização para exibir corretamente
+  npimg = img.numpy() #Converte o tensor para numpy
+  plt.imshow(np.transpose(npimg, (1,2,0))) #Ajusta dimensões para exibir
+  plt.show()
+
+# Pegamos um lote de imagens
+dataiter = iter(trainloader) #Tem um lote de imagens do dataset
+images, labels = next(dataiter)
+
+# Mostramos as imagens
+imagem(torchvision.utils.make_grid(images))
+
+# Exibimos os rótulos correspondentes
+print("Rótulos das imagens:", labels.tolist())
