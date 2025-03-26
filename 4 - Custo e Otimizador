@@ -1,0 +1,7 @@
+import torch.optim as optim
+
+#Definir a função de custo (Cross Entropy  Loss)
+criterio = nn.CrossEntropyLoss() #Calcula o erro do modelo
+
+# Definir o otimizador (Adam) com taxa de aprendizado de 0.001
+otimizador = optim.Adam(modelo.parameters(), lr=0.001) #Atualiza os pesos da rede, com taxa de aprendizado de 0.001
