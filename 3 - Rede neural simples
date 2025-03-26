@@ -1,0 +1,19 @@
+import torch.nn as nn
+import torch.nn.functional as F
+
+#Definição da rede neural 
+class RedeNeural(nn.Module):
+  def __init__(self):
+    super(RedeNeural, self).__init__()
+    self.fc1 = nn.Linear(28 * 28, 128)  # Camada oculta (128 neurônios)
+    self.fc2 = nn.Linear(128, 10)       # Camada de saída (10 neurônios)
+
+  def forward(self, x):
+      x = x.view(-1, 28 * 28)  # Achatar a imagem de 28x28 para um vetor de 784
+      x = F.relu(self.fc1(x))  # Aplicar ReLU na primeira camada
+      x = self.fc2(x)          # Passar pela camada de saída
+      return F.log_softmax(x, dim=1)  # Aplicar Softmax para obter probabilidades
+
+# Criando a rede
+modelo = RedeNeural()
+print(modelo)  # Exibir a estrutura da rede
